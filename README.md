@@ -8,7 +8,11 @@ Terraform enables **Infrastructure as Code (IaC)**, which means the entire AWS s
 - Version controlled
 - Reused
 - Recreated easily
-- Destroyed safely
+- Destroyed safely (easily)
+
+>For the 3-tier architecture, I haven’t created separate documentation as the steps are slightly similar. All related code is available in the repository.<br>
+👉[click here](https://github.com/nikiimisal/Project-code-3-tier-arc-using_terraform)
+
 
 ---
 
@@ -39,25 +43,23 @@ This separation improves:
 ---
 
 ## 🖼 Architecture Diagram
-(Add architecture diagram screenshot here)
 
-Suggested diagram:
-- VPC
-- Public Subnet → Web Server
-- Private Subnet → DB Server
-- Internet Gateway attached to VPC
+
+| **2-tier-arc dig**    | **img**          | **best-practice**          |
+|--------------------------------|------------------------------------|------------------------------------|
+| ![VS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/12334.png?raw=true) | ![AWS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/kk.gif?raw=true) | ![AWS]() |
 
 ---
 
 ## 📁 Project Folder Structure
 
+```
 2-tier-project/
 ├── main.tf        # Core infrastructure code
 ├── variables.tf   # Input variables
 ├── outputs.tf     # Output values
 └── README.md      # Project documentation
-
-(Add project folder screenshot here)
+```
 
 ---
 
@@ -87,8 +89,6 @@ Suggested diagram:
 - Route: `0.0.0.0/0 → IGW`
 - Applied to public subnet
 
-(Add route table screenshot here)
-
 ---
 
 ## 🔐 Security Groups (Firewall Rules)
@@ -103,8 +103,6 @@ A security group is used to control inbound and outbound traffic.
 ### Outbound Rules
 - Allow all outbound traffic
 
-(Add security group rules screenshot here)
-
 ---
 
 ## 💻 EC2 Instances
@@ -115,8 +113,6 @@ A security group is used to control inbound and outbound traffic.
 - Handles application traffic
 - Can connect to DB server internally
 
-(Add public EC2 screenshot here)
-
 ---
 
 ### 🔵 Private Server (Database Server)
@@ -124,8 +120,6 @@ A security group is used to control inbound and outbound traffic.
 - No public IP
 - Accessible only from public server
 - Used for database storage
-
-(Add private EC2 screenshot here)
 
 ---
 
@@ -141,7 +135,6 @@ Contains:
 - Security group
 - EC2 instances
 
-(Add `terraform apply` success screenshot here)
 
 ---
 
@@ -164,27 +157,59 @@ Displays useful information after deployment:
 - Public IP of web server
 - Private IP of database server
 
-(Add terraform output screenshot here)
 
 ---
 
 ## 🚀 How to Deploy This Project
 
+### Step 0: Entering the 2-tier arc project Folder
+
+<p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20205546.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+ 
+
 ### Step 1: Initialize Terraform
+```
 terraform init
+```
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20211424.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
 
 ### Step 2: Validate Configuration
+```
 terraform validate
+```
 
 ### Step 3: Preview Resources
+```
 terraform plan
+```
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20211613.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+ </p>
 
 ### Step 4: Create Infrastructure
+```
 terraform apply
+```
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20211948.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+ </p>
 
 ### Step 5: Destroy Infrastructure
+```
 terraform destroy
+```
 
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20221524.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+ </p>
 ---
 
 ## 📌 Terraform Backend
@@ -195,7 +220,58 @@ terraform destroy
   - Team collaboration
   - Recovery
 
-(Add S3 bucket screenshot here)
+```
+terraform {
+  backend "s3" {
+    bucket = "gdfs23"
+    key    = "terraform.tfstate"
+    region = "eu-north-1"
+  }
+}
+
+```
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-11-25%20155703.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+ </p>
+---
+
+## Out-Put's
+
+>The screenshots show the outputs that are generated from the 2-tier architecture project code.
+
+1️⃣  Created instances.
+
+<p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20220113.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+2️⃣  VPC
+
+
+<p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20220212.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+3️⃣  Subnet's
+
+
+<p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20220415.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+4️⃣  Route Table
+
+<p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20220430.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+5️⃣ Internate Gateway
+
+<p align="center">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/Screenshot%202025-12-15%20220454.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
 
 ---
 
@@ -210,7 +286,7 @@ terraform destroy
 
 ---
 
-## 🧠 Interview Explanation (Simple)
+## 🧠 Explanation in Simple
 “This project demonstrates a two-tier AWS architecture using Terraform where the web server is deployed in a public subnet and the database server is deployed in a private subnet, ensuring security and separation of concerns.”
 
 ---
