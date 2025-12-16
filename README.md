@@ -47,7 +47,7 @@ This separation improves:
 
 | **2-tier-arc dig**    | **img**          | **best-practice**          |
 |--------------------------------|------------------------------------|------------------------------------|
-| ![VS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/12334.png?raw=true) | ![AWS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/kk.gif?raw=true) | ![AWS]() |
+| ![VS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/12334.png?raw=true) | ![AWS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/kk.gif?raw=true) | ![AWS](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform/blob/main/img/123.jpg?raw=true) |
 
 ---
 
